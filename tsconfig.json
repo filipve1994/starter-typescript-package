@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+//    "rootDir": ".",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./src/*"],
+//      "@/*": ["src/*"],
+//      "@@/*": ["*"]
+      "@@/*": ["./*"]
+    },
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "lib": ["ESNext", "DOM"],
+//    "skipLibCheck": true,
+    "types": ["vite/client", "node"],
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+//    "moduleResolution": "node",
+//    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+//    "isolatedModules": true,
+    "noEmit": true,
+    "sourceMap": true,
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": [
+    "src",
+    "test"
+  ],
+//  "exclude": ["**/*.test.ts", "node_modules", "test/**", ".history/**"]
+  "exclude": [
+    "test/**",
+    "node_modules",
+    ".history/**",
+    "vite.config.ts",
+    "dts-bundle-generator.config.ts"
+  ]
+}
