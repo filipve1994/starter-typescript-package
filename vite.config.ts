@@ -1,3 +1,5 @@
+/// <reference types="vite/client" />
+
 /// <reference types="vitest" />
 
 import * as path from 'node:path';
@@ -5,6 +7,7 @@ import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
 import tsconfigPaths from 'vite-tsconfig-paths';
+// @ts-expect-error
 import * as packageJson from './package.json';
 
 const getPackageName = () => packageJson.name;
@@ -28,12 +31,13 @@ const formats = Object.keys(fileName) as Array<keyof typeof fileName>;
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "./",
+  // base: './',
   build: {
     outDir: './dist',
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
       name: getPackageNameCamelCase(),
+      // formats: ['es'],
       formats,
       fileName: format => fileName[format],
     },

@@ -10,6 +10,7 @@ export default antfu({
     ignores: [
         '**/fixtures',
         'eslint.config.js',
+        "vite.config.ts"
         // ...globs
     ],
 
