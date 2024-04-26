@@ -1,5 +1,5 @@
 {
-  "name": "starter-typescript-package",
+  "name": "@filipve1994/starter-typescript-package",
   "private": true,
   "version": "0.0.0",
   "type": "module",
