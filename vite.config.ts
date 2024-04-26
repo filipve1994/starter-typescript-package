@@ -10,7 +10,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 // @ts-expect-error
 import * as packageJson from './package.json';
 
-const getPackageName = () => packageJson.name;
+const getPackageName = () => packageJson.namenormal;
 
 function getPackageNameCamelCase() {
   try {
