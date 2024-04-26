@@ -1,7 +1,6 @@
 {
   "name": "@filipve1994/starter-typescript-package",
   "namenormal": "starter-typescript-package",
-  "private": true,
   "version": "0.0.0",
   "type": "module",
   "author": "Filip VE (https://github.com/filipve1994/)",
