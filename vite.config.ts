@@ -1,24 +1,22 @@
 /// <reference types="vitest" />
 
-import { defineConfig } from "vite";
-// import {resolve} from 'node:path';
-import * as path from "node:path";
-// @ts-ignore
-import * as packageJson from "./package.json";
-// import {version, name} from "./package.json";
-import tsconfigPaths from "vite-tsconfig-paths";
+import * as path from 'node:path';
+import { defineConfig } from 'vite';
+import dts from 'vite-plugin-dts';
 
-const getPackageName = () => {
-  return packageJson.name;
-};
+import tsconfigPaths from 'vite-tsconfig-paths';
+import * as packageJson from './package.json';
 
-const getPackageNameCamelCase = () => {
+const getPackageName = () => packageJson.name;
+
+function getPackageNameCamelCase() {
   try {
-    return getPackageName().replace(/-./g, (char) => char[1].toUpperCase());
-  } catch (err) {
-    throw new Error("Name property in package.json is missing.");
+    return getPackageName().replace(/-./g, char => char[1].toUpperCase());
   }
-};
+  catch (err) {
+    throw new Error('Name property in package.json is missing.');
+  }
+}
 
 const fileName = {
   es: `${getPackageName()}.mjs`,
@@ -32,20 +30,27 @@ const formats = Object.keys(fileName) as Array<keyof typeof fileName>;
 export default defineConfig({
   base: "./",
   build: {
-    outDir: "./build/dist",
+    outDir: './dist',
     lib: {
-      entry: path.resolve(__dirname, "src/index.ts"),
+      entry: path.resolve(__dirname, 'src/index.ts'),
       name: getPackageNameCamelCase(),
       formats,
-      fileName: (format) => fileName[format],
+      fileName: format => fileName[format],
     },
   },
-  test: {},
+  // https://github.com/vitest-dev/vitest
+  test: {
+    include: ['test/**/*.test.ts'],
+    environment: 'jsdom',
+  },
   // resolve: {
   //     alias: [
   //         { find: "@", replacement: path.resolve(__dirname, "src") },
   //         { find: "@@", replacement: path.resolve(__dirname) },
   //     ],
   // },
-  plugins: [tsconfigPaths()],
+  plugins: [
+    tsconfigPaths(),
+    dts(({ rollupTypes: true })),
+  ],
 });

@@ -1,5 +1,5 @@
 {
-  "plugins": ["stylelint-order", "stylelint-prettier"],
+  "plugins": ["stylelint-order"],
   "extends": [
     "stylelint-config-recommended",
     "stylelint-config-sass-guidelines"
@@ -11,7 +11,6 @@
     }
   ],
   "rules": {
-    "prettier/prettier": true,
     "no-descending-specificity": null,
     "max-nesting-depth": 2,
     "selector-max-id": 1,

@@ -1,4 +1,4 @@
 {
-  "./**/*.{ts,html,json}": "npm run format:scripts",
+  "*.ts": ["eslint"],
   "./**/*.{css,scss}": "npm run format:styles"
 }
